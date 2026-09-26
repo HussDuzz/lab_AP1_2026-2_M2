@@ -59,6 +59,7 @@ public class EstacaoTest {
     void deveCalcularAproveitamentoFrota() {
         //TODO Tarefa 4: testar aproveitamentoFrota em pelo menos dois cenários
         // (ex.: 1 em uso e 1 disponível → 0.5; só em uso → Double.MAX_VALUE)
+        estacao.aproveitamentoFrota(1);
     }
 
     @Test

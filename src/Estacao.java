@@ -42,7 +42,11 @@ public class Estacao {
      */
     public boolean liberarDisponivel(String codigo) {
         //TODO Tarefa 1
-        return false;
+        if (codigo.equals(getCodigo())) {
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public int totalPatinetes() {
@@ -74,9 +78,21 @@ public class Estacao {
      * Frota sem disponivel nem em_uso → 0.
      * Só em_uso (sem disponivel) → Double.MAX_VALUE.
      */
-    public double aproveitamentoFrota() {
+    public double aproveitamentoFrota(int total) {
         //TODO Tarefa 2
-        return 0.0;
+        if (totalEmUso() != 0 || totalDisponiveis() != totalPatinetes()) {
+            double aprov = totalEmUso() / (totalDisponiveis() + totalEmUso());
+            return aprov;
+        
+        }else if (totalEmUso() == totalPatinetes()){
+            return Double.MAX_VALUE;
+        
+        }else{
+            return 0;
+        }
+
+        
+        
     }
 
     /**
@@ -86,7 +102,13 @@ public class Estacao {
      */
     public boolean estaNaFrenteDe(Estacao outra) {
         //TODO Tarefa 3
+        if (Estacao(aproveitamentoFrota(0)) > outra(aproveitamentoFrota(0))){
+            return true;
+        }else if (Estacao(totalPatinetes()) > outra(totalPatinetes())){
+            return true;
+        }else{
         return false;
+        }
     }
 
     /**
